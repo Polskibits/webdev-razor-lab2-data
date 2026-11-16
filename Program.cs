@@ -1,4 +1,6 @@
 using System.Globalization;
+using Microsoft.EntityFrameworkCore;
+using MyRazorApp.Data;
 
 // Set default culture to en-GB so currency and date formatting match the lab tutorial (£)
 var cultureInfo = new CultureInfo("en-GB");
@@ -24,6 +26,9 @@ builder.Services.AddRazorPages();
 // builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 // -----------------------------------------------------------------------------
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
